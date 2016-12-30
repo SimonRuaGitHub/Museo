@@ -1,0 +1,54 @@
+body
+{
+background-color: #e2e2e2;
+margin:0px;
+padding:0px;
+font-family: helvetica Neue;
+font-weight: lighter;
+}
+
+section#formulario{
+    width: 400px;
+	height: 800px;
+	background-color: white;
+	overflow: hidden;
+}
+
+p#titulo{
+    font-size: 1.5em;
+	text-align: center;
+	margin-top: 20px;
+}
+
+input[type = "text"] , input[type = "password"]
+{
+    width: 360px;
+	height: 35px;
+	margin-left: 20px;
+	margin-top: 10px;
+	padding-left: 10px;
+	font-size: 1.1em;
+	outline: none;
+	border: 0px;
+	background-color: #dcdcdc;
+	border-radius: 5px;
+}
+
+input[type = "submit"] , input[type = "button"] {
+     margin:20px;
+	 width: 320px;
+	 margin-left: 40px; 
+	 height: 40px;
+	 font-size: 1.1em;
+	 border: 0px;
+	 background-color: #4a9133;
+	 color: white;
+	 border-radius: 5px;
+	 -webkit-box-shadow: 0px 5px 0px #346324;
+}
+
+img{
+   float: right;
+   width: 948px;
+   height: 800px;
+}

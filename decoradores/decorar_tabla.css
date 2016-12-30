@@ -1,0 +1,23 @@
+table{
+     border: 1px solid black;
+	 border-radius: 7px;
+}
+
+body{
+     background-color: #32CD32;
+}
+
+tr#encabezado{
+
+      font-size: 1.4em;
+}
+
+
+td{
+    background-color:#008B8B;
+	border-radius: 5px;
+	font-size: 1.2em;
+}
+
+
+

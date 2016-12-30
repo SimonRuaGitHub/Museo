@@ -1,0 +1,91 @@
+body{
+	background-size: 1600px 930px;	
+	background-repeat: no-repeat;
+}
+
+form#frmLogin{
+  width:500px;
+  margin:30px auto;
+  border-radius:0.4em;
+  overflow:hidden;
+  position:relative;
+  background: rgba(122, 130, 136, 0.4);
+}
+
+label#lblNombreUsuario, #lblContrasena{
+	color: #1a1a1a;
+}
+
+label#lblcontenedor{
+	margin: -20px -20px 21px;
+	width:500px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    text-shadow: 0 2px white;
+    background: #f3f3f3;
+    border-bottom: 3px solid #cfcfcf;
+    border-radius: 3px 3px 0 0;
+    @include linear-gradient(top, whiteffd, #eef2f5);
+    @include box-shadow(0 1px #f5f5f5);
+}
+
+.error{
+	color: #ff1a1a;/*rojo*/
+}
+
+.confirmando{
+	color:green;/*verde*/
+}
+
+input[type = "text"] , input[type = "password"]{
+	width: 380px!important;
+}
+
+button{
+   margin-bottom:30px;
+}
+
+.input-group {
+	right: -40px;
+}
+
+.btn-primary {
+	border-radius: 0px;
+	transition-duration: 0.4s;
+}
+
+.btn-primary:active .btn-primary:after{
+		outline: none;
+}
+
+.btn-primary span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-primary span:after {
+  content: '\e080';
+  position: absolute;
+  opacity: 0;
+  top: -13px;
+  right: -25px;
+  transition: 0.5s;
+}
+
+.btn-primary:hover span {
+  padding-right: 20px;
+}
+
+.btn-primary:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.copyright{
+	font-size: 16px;
+}
