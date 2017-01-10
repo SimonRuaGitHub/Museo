@@ -2,7 +2,8 @@ function cargarOpciones()
 {
 	 cargarEstilos();
 	 cargarTecnicas();
-     cargarComponentes();
+         cargarComponentesCompatibles();
+        // cargarDatosActualizacion();
 }
 
 function abrirModalEstilo()
@@ -73,10 +74,27 @@ function llenarOpcionesTecnicas(tecnicas)
 
 }
 
-function cargarComponentes()
+function cargarComponentesCompatibles()
 {
       if ( $('#DtEntrada').prop('type') != 'date' ) 
       {
             $('#DtEntrada').datepicker({ dateFormat: 'yy-mm-dd' });
       }
+}
+
+function cargarDatosActualizacion()
+{
+         console.log(sessionStorage.estado);
+         $('#txtCodigo').val(sessionStorage.codigo);
+         $('#txtNombre').val(sessionStorage.nombre);
+         $('#txtTipo').val(sessionStorage.tipo);
+         $('#txtFechaCr').val(sessionStorage.fechaCreacion);
+         $('#txtPeriodo').val(sessionStorage.periodo);
+         $('#txtValor').val(sessionStorage.valor);
+         $('#txtCantidad').val(sessionStorage.cantidad);
+         $('#txtValor').val(sessionStorage.valor);
+         $('#DtEntrada').val(sessionStorage.fechaEntrada);
+         $('#cboxEstado').text(sessionStorage.estado);
+         $('#cboxEstilo').text(sessionStorage.estilo);
+         $('#cboxTecnica').text(sessionStorage.tecnica);
 }

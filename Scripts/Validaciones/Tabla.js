@@ -1,21 +1,6 @@
-var idObra;
-
-function iniciarContextMenu()
-{
-    $('#tblObras').on('click', '.clickable-row', function(event)
-    {
-           $(this).addClass('active').siblings().removeClass('active');
-    });
-}
-
-function actualizarObra()
-{
-    
-}
-
 function consultarTodasObras()
 {
-   var url = '../BaseDeDatos/ObrasControlador.php';
+    var url = '../BaseDeDatos/ObrasControlador.php';
 	
     $.ajax(  {
                 url: url,
@@ -26,7 +11,7 @@ function consultarTodasObras()
                 success: function(obras)
                 {
                          llenarTabla(obras);
-                         iniciarContextMenu();
+                         iniciarAccionesTabla();
                 }
 	     }
          ); 	      
@@ -35,17 +20,14 @@ function consultarTodasObras()
 function llenarTabla(obras)
 {
     var row;
-    var checkbox;
     
     $(obras).each(
          	    function(i , d)
          	    {
                           ignorarNulos(d);
                           
-                          checkbox = '<input type="checkbox" value="">';
-                          
                           row = '<tr id='+d.ID+' class="clickable-row">\n\
-                                 <td>'+checkbox+'</td>\n\
+                                 <td></td>\n\
                                  <td>'+d.ID+'</td>\n\
                                  <td>'+d.tipo+'</td>\n\
                                  <td>'+d.nombre+'</td>\n\
@@ -84,3 +66,80 @@ function ignorarNulos(d)
      if(d.autores == null)
         d.autores = '';
 }
+
+function iniciarAccionesTabla()
+{
+          var table =   $('#tblObras').DataTable( {
+        dataType: 'json',
+        columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
+    } );
+    
+    $( "#aElim" ).click(function() {
+          var ids = $.map(table.rows('.selected').data(), function (item) {
+           return item[1];
+          });
+
+          eliminarObra(ids.toString());
+      });
+      
+      $( "#aAct" ).click(function() {     
+          //cargarDatosObraEmisor(table);
+      });
+}
+
+function cargarDatosObraEmisor(table)
+{
+         var obrasArray = new Array(14);
+         var nombresColumnas = ["codigo","tipo","nombre","fechaCreacion","periodo","fechaEntrada",
+                                "material","valor","cantidad","estado","Autores","museo","tecnica","estilo"];
+                            
+         for (i = 1; i <= 14 ; i++) 
+         {
+             obrasArray[i] = $.map(table.rows('.selected').data(), function (item) {
+                                   return item[i];
+                                });
+             
+             console.log(nombresColumnas[i-1]+":"+obrasArray[i]);
+             
+             sessionStorage.setItem(nombresColumnas[i-1],obrasArray[i]);
+         } 
+         
+         console.log("Almacenaje de sesion: "+sessionStorage.codigo);
+         window.location = "GestionCatalogo.php";
+}
+
+function eliminarObra(codObra)
+{
+        var url = '../BaseDeDatos/ObrasControlador.php';
+	
+       $.ajax(  {
+                url: url,
+                type: 'POST',
+                async: true,
+                data:{ accion:'eliminar' ,
+                       codigo: codObra },
+                success: function(confirm)
+                {
+                         if(confirm == 1)
+                         {
+                             alert("obra eliminada con exito");
+                             location.reload();
+                         }
+                         else
+                         {
+                             alert("La obra no ha sido encontrada");
+                         }
+                }
+	     }
+         );
+}
+

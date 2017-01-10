@@ -79,8 +79,8 @@
 		 </select>
 		 <label for="cboxTecnica">Tecnica:</label>
 		 <select id="cboxTecnica" class="form-control">
-		     <option value="seleccione">Seleccione</option>
-			 <option value="nuevo">Nuevo..</option>
+		      <option value="seleccione">Seleccione</option>
+		      <option value="nuevo">Nuevo..</option>
 		 </select>  
 	    </div>
 	  </div>	

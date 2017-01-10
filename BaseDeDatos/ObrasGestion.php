@@ -15,7 +15,7 @@ class ObrasGestion
             	                   )
                       );     
 
-            print "true";
+            echo TRUE;
 	 }
 
      public function consultarObras($conexion)
@@ -53,7 +53,7 @@ class ObrasGestion
              return "true";
      }
 
-     public function eliminarObra($Obra,$codigo,$conexion)
+     public function eliminarObra($codigo,$conexion)
      {
              $ins = "DELETE FROM obras WHERE ID = :codigo";
 

@@ -37,17 +37,17 @@ function validarRegistrarObras()
 			         },
 		       success: function(flag_registro)
 			   { 		
-			           if(flag_registro)		
+			           if(flag_registro == 1)		
 			           {
-			           	  $('#DivMensaje').removeClass("alert alert-danger");
-	                      $('#DivMensaje').addClass("alert alert-success");
-	                      $('#DivMensaje').html("<strong>Obra registrada con exito</strong>");
+			                $('#DivMensaje').removeClass("alert alert-danger");
+	                                $('#DivMensaje').addClass("alert alert-success");
+	                                $('#DivMensaje').html("<strong>Obra registrada con exito</strong>");
 			           }
-			           else 
+			            else 
 			           {
-                          $('#DivMensaje').removeClass("alert alert-success");
-	                      $('#DivMensaje').addClass("alert alert-danger");
-	                      $('#DivMensaje').html("<strong>Revise si la obra ya existe</strong>");
+                                     $('#DivMensaje').removeClass("alert alert-success");
+	                             $('#DivMensaje').addClass("alert alert-danger");
+	                             $('#DivMensaje').html("<strong>Revise si la obra ya existe</strong>");
 			           }
 				          
 			   },
