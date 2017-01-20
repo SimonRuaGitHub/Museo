@@ -1,3 +1,5 @@
+var table;
+
 function consultarTodasObras()
 {
     var url = '../BaseDeDatos/ObrasControlador.php';
@@ -11,7 +13,7 @@ function consultarTodasObras()
                 success: function(obras)
                 {
                          llenarTabla(obras);
-                         iniciarAccionesTabla();
+                         iniciarPropiedadesTabla();
                 }
 	     }
          ); 	      
@@ -67,9 +69,9 @@ function ignorarNulos(d)
         d.autores = '';
 }
 
-function iniciarAccionesTabla()
+function iniciarPropiedadesTabla()
 {
-          var table =   $('#tblObras').DataTable( {
+        table =   $('#tblObras').DataTable( {
         dataType: 'json',
         columnDefs: [ {
             orderable: false,
@@ -82,64 +84,40 @@ function iniciarAccionesTabla()
         },
         order: [[ 1, 'asc' ]]
     } );
-    
-    $( "#aElim" ).click(function() {
-          var ids = $.map(table.rows('.selected').data(), function (item) {
-           return item[1];
-          });
-
-          eliminarObra(ids.toString());
-      });
       
-      $( "#aAct" ).click(function() {     
-          //cargarDatosObraEmisor(table);
-      });
+   /*   $( "#aAct" ).click(function() {     
+          cargarDatosObraEmisor(table);
+      });*/
 }
 
-function cargarDatosObraEmisor(table)
-{
-         var obrasArray = new Array(14);
+function cargarDatosObra()
+{ 
+         var columnsFixed = 1; 
+         var columnsQuantity = $("table > thead > tr > th").length;
+         var realColumnsQuantity = columnsQuantity - columnsFixed;       
+         var obrasArray = new Array(realColumnsQuantity);       
          var nombresColumnas = ["codigo","tipo","nombre","fechaCreacion","periodo","fechaEntrada",
                                 "material","valor","cantidad","estado","Autores","museo","tecnica","estilo"];
                             
-         for (i = 1; i <= 14 ; i++) 
+         console.log("table columns: "+realColumnsQuantity);
+                            
+         for (i = 1; i <= realColumnsQuantity ; i++) 
          {
-             obrasArray[i] = $.map(table.rows('.selected').data(), function (item) {
-                                   return item[i];
-                                });
-             
-             console.log(nombresColumnas[i-1]+":"+obrasArray[i]);
-             
-             sessionStorage.setItem(nombresColumnas[i-1],obrasArray[i]);
+             obrasArray[i] = getDataColumn(i);                  
+             console.log(nombresColumnas[i-1]+":"+obrasArray[i]);            
+            // sessionStorage.setItem(nombresColumnas[i-1],obrasArray[i]);
          } 
          
-         console.log("Almacenaje de sesion: "+sessionStorage.codigo);
-         window.location = "GestionCatalogo.php";
+         return obrasArray;
 }
 
-function eliminarObra(codObra)
+function getDataColumn(index)
 {
-        var url = '../BaseDeDatos/ObrasControlador.php';
-	
-       $.ajax(  {
-                url: url,
-                type: 'POST',
-                async: true,
-                data:{ accion:'eliminar' ,
-                       codigo: codObra },
-                success: function(confirm)
-                {
-                         if(confirm == 1)
-                         {
-                             alert("obra eliminada con exito");
-                             location.reload();
-                         }
-                         else
-                         {
-                             alert("La obra no ha sido encontrada");
-                         }
-                }
-	     }
-         );
+    var data;
+    
+    data = $.map(table.rows('.selected').data(), function (item) {
+                                   return item[index];
+                    });
+                    
+    return data.toString();
 }
-

@@ -3,7 +3,6 @@ function cargarOpciones()
 	 cargarEstilos();
 	 cargarTecnicas();
          cargarComponentesCompatibles();
-        // cargarDatosActualizacion();
 }
 
 function abrirModalEstilo()
@@ -80,21 +79,4 @@ function cargarComponentesCompatibles()
       {
             $('#DtEntrada').datepicker({ dateFormat: 'yy-mm-dd' });
       }
-}
-
-function cargarDatosActualizacion()
-{
-         console.log(sessionStorage.estado);
-         $('#txtCodigo').val(sessionStorage.codigo);
-         $('#txtNombre').val(sessionStorage.nombre);
-         $('#txtTipo').val(sessionStorage.tipo);
-         $('#txtFechaCr').val(sessionStorage.fechaCreacion);
-         $('#txtPeriodo').val(sessionStorage.periodo);
-         $('#txtValor').val(sessionStorage.valor);
-         $('#txtCantidad').val(sessionStorage.cantidad);
-         $('#txtValor').val(sessionStorage.valor);
-         $('#DtEntrada').val(sessionStorage.fechaEntrada);
-         $('#cboxEstado').text(sessionStorage.estado);
-         $('#cboxEstilo').text(sessionStorage.estilo);
-         $('#cboxTecnica').text(sessionStorage.tecnica);
 }

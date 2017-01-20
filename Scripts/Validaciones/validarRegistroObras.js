@@ -5,7 +5,7 @@ function validarDatos()
 	 $('#DivMensaje').removeClass("alert alert-danger");
 	 $('#DivMensaje').removeClass("alert alert-success");
 	 
-     mensajes = validarCamposVacios();
+         mensajes = validarCamposVacios();
 	 mensajes += (mensajes != "" ? '<br>': "") + validarFecha();
 	 	 
 	 if(mensajes != "")

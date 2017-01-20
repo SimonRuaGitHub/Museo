@@ -86,7 +86,7 @@
 	  </div>	
       <div class="col-xs-6">
 	    <div class="col-xs-5">
-	      <label for="txtCodigo">Valor:*</label>
+	      <label for="txtValor">Valor:*</label>
           <input type="number" id="txtValor" min="1"  step="0.01" onkeypress="esNumeroReal(event)" class="form-control" />
 		</div>
 		</br><br><br>
@@ -120,24 +120,6 @@
       </div>	  
    </div>
  </form>
- <!-- Modal-->
- <div class="modal fade" id="ModalEstilo" role="dialog">
-    <div class="modal-dialog">  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
 <?php                                   } ?>
