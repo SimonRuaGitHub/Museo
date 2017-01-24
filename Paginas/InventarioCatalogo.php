@@ -19,6 +19,9 @@
            <script src="../Scripts/dataTable/js/jquery.dataTables.min.js"></script>
            <script src="../Scripts/dataTable/js/dataTables.bootstrap.min.js"></script>  
            <script src="../Scripts/dataTable/js/dataTables.select.min.js"></script>
+           <script src="../Scripts/Validaciones/cargarOpciones.js"></script>
+           <script src="../Scripts/Validaciones/validarRegistroObras.js"></script>
+           <script src="../Scripts/Validaciones/bloquearCamposNumericosObras.js"></script>
 	   <meta charset = "utf-8">
 </head>
 <body onload="consultarTodasObras()">
@@ -126,13 +129,15 @@
                    <form role="form">
                      <div class="container-fluid">
                         <div class="row">
-                            <div class="form-group col-xs-6">
-                              <label for="txtCodigo">Codigo:*</label>
-                              <input type="text" class="form-control" id="txtCodigo">
+                            <div class="form-group col-xs-4">
+                                    <label for="txtCodigo">Codigo:*</label>
+                                    <input type="text" class="form-control" id="txtCodigo">
                             </div>
-                            <div class="form-group col-xs-6">
-                              <label for="txtValor">Valor:*</label>
-                              <input type="text" class="form-control" id="txtValor">
+                            <div class="form-group col-xs-8">
+                              <div class="form-group col-sm-4">
+                                 <label for="txtValor">Valor:*</label>
+                                 <input type="number" min="1"  step="0.01" onkeypress="esNumeroReal(event)" class="form-control" id="txtValor">
+                              </div>
                             </div>
                             <div class="form-group col-xs-6">
                               <label for="txtNombre">Nombre:*</label>
@@ -148,13 +153,15 @@
                                     </select>
                                </div>
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-4">
                               <label for="txtTipo">Tipo:*</label>
                               <input type="text" class="form-control" id="txtTipo">
                             </div>
-                            <div class="form-group col-xs-6">
-                              <label for="txtCantidad">Cantidad:*</label>
-                              <input type="text" class="form-control" id="txtCantidad">
+                            <div class="form-group col-xs-8">
+                              <div class="form-group col-sm-4">
+                                 <label for="txtCantidad">Cantidad:*</label>
+                                 <input id="txtCantidad" class="form-control" type="number" min="1"  step="1" onkeypress="esNumeroNatural(event)" >
+                              </div>
                             </div>
                             <div class="form-group col-xs-6">
                               <label for="txtFechaCr">Fecha creacion:*</label>
@@ -186,45 +193,14 @@
                             <div class="form-group col-xs-6">
                               <label for="txaAutores">Autores:</label>
 		              <textarea id="txaAutores" rows = "3" class="form-control"></textarea>   
+                              <div id="DivMensaje"></div>
                             </div>
-                 <!--           <div class="form-group">
-                              <label for="txtCodigo">Tipo:*</label>
-                              <input type="text" class="form-control" id="txtTipo">
-                            </div>
-                            <div class="form-group">
-                              <label for="txtCodigo">Fecha de creacion:*</label>
-                              <input type="text" class="form-control" id="txtFechaCr">
-                            </div>
-                            <div class="form-group">
-                              <label for="txtCodigo">Periodo:*</label>
-                              <input type="text" class="form-control" id="txtPeriodo">
-                            </div>
-                            <div class="form-group">
-                              <label for="txtCodigo">Fecha entrada Museo:*</label>
-                              <input type="text" class="form-control" id="DtEntrada">
-                            </div>
-                            <div class="form-group">
-                              <label for="txtCodigo">Periodo:*</label>
-                              <input type="text" class="form-control" id="txtPeriodo">
-                            </div>
-                            <div class="form-group">
-                                <label for="cboxEstilo">Estilo:</label>
-                                <select id="cboxEstilo" class="form-control" onclick="abrirModalEstilo()">
-                                    <option value="seleccione">Seleccione</option>
-                                    <option value="nuevo">Nuevo..</option>
-                                </select>
-                                <label for="cboxTecnica">Tecnica:</label>
-                                <select id="cboxTecnica" class="form-control">
-                                     <option value="seleccione">Seleccione</option>
-                                     <option value="nuevo">Nuevo..</option>
-                                </select>  
-                            </div> -->
                         </div>
                      </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" id="btnAceptarAct" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button type="button" id="btnAceptarAct" onclick="validarActualizarObra()" class="btn btn-primary" data-dismiss="modal">Actualizar obra</button>
                   <button type="button" class="btn btn-alert" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>

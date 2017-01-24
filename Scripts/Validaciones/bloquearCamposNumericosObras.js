@@ -22,9 +22,8 @@ function esNumeroNatural(evt)
 function esNumeroReal(evt)
 {
 	if(event.which < 48 || event.which > 57)
-    {
+        {
 		if(event.which != 44)// ' , '
 		   event.preventDefault();
-	}
-	   
+	}	   
 }

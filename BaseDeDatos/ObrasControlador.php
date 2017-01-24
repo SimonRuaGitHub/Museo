@@ -64,7 +64,7 @@ class ObrasControlador
       {
              $con = null;
              $mensaje = null;
-             $codigoObra = $_REQUEST['codigo'];
+             $codigoObra = $_REQUEST['codigoViejo'];
              self::cargarParametros($Obra);
 
              $con = conexion_bd::conectar();
