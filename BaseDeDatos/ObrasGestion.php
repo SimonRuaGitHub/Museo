@@ -38,19 +38,20 @@ class ObrasGestion
 
      public function actualizarObra($Obra,$codigo,$conexion)
      {
-             $ins = "UPDATE obras  SET ID = ?,tipo = ?,nombre = ?,fecha_creacion = ?,periodo = ?,fecha_entrada = ?,material = ?,
-                                       valor = ?,cantidad = ?,estado = ?,autores = ?,cod_tecnica = ?,cod_estilo = ?
-                     WHERE ID = :codigo";
+             $ins = "UPDATE obras  SET ID = ?,tipo = ?,nombre = ?,fecha_creacion = ?
+                                       ,periodo = ?,fecha_entrada = ?,material = ?,valor = ?
+                                       ,cantidad = ?,estado = ?,autores = ?,cod_tecnica = ?,cod_estilo = ?
+                     WHERE ID = ?";
 
              $sqlEx = $conexion -> prepare($ins);
-             $sqlEx -> bindParam(':codigo' , $codigo);
              $sqlEx -> execute(array( 
-                                       $obra->getCodigo(),$obra->getTipo(), $obra->getNombre(),$obra->getFechaCreacion(),
-                                       $obra->getPeriodo(),$obra->getFechaEntrada(),$obra->getMaterial(),$obra->getValor(),
-                                       $obra->getCantidad(),$obra->getEstado(),$obra->getAutor(),$obra->getTecnica(),$obra->getEstilo()
+                                       $Obra->getCodigo(),$Obra->getTipo(), $Obra->getNombre(),$Obra->getFechaCreacion(),
+                                       $Obra->getPeriodo(),$Obra->getFechaEntrada(),$Obra->getMaterial(),$Obra->getValor(),
+                                       $Obra->getCantidad(),$Obra->getEstado(),$Obra->getAutor(),$Obra->getTecnica(),$Obra->getEstilo(),
+                                       $codigo
                                    ));
 
-             return "true";
+             return True;
      }
 
      public function eliminarObra($codigo,$conexion)

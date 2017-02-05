@@ -93,7 +93,7 @@
 	    <div class="col-xs-4">
 		   <label for="cboxEstado">Estado:*</label>
 		   <select id="cboxEstado" class="form-control"/>
-		     <option value="0">Seleccione</option>
+		         <option value="0">Seleccione</option>
 			 <option value="1">disponible</option>
 			 <option value="2">restauracion</option>
 		   </select>  

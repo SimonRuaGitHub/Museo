@@ -10,11 +10,11 @@ function validarDatos()
 	 	 
 	 if(mensajes != "")
 	 {
-		$('#DivMensaje').addClass("alert alert-danger");
+            $('#DivMensaje').addClass("alert alert-danger");
 	    $('#DivMensaje').html("<strong>Error, Existen campos obligatorios vacios</strong><br><strong>Debe ingresar obligatoriamente: </strong>"+mensajes); 
-     }
+         }
 	 else
-     {
+         {
 		 validarRegistrarObras();
 	 }     
 }
@@ -41,13 +41,13 @@ function validarRegistrarObras()
 			           {
 			                $('#DivMensaje').removeClass("alert alert-danger");
 	                                $('#DivMensaje').addClass("alert alert-success");
-	                                $('#DivMensaje').html("<strong>Obra registrada con exito</strong>");
+	                                $('#DivMensaje').html("<strong>Obra actualizada con exito</strong>");
 			           }
 			            else 
 			           {
                                      $('#DivMensaje').removeClass("alert alert-success");
 	                             $('#DivMensaje').addClass("alert alert-danger");
-	                             $('#DivMensaje').html("<strong>Revise si la obra ya existe</strong>");
+	                             $('#DivMensaje').html("<strong>Revise ingreso inadecuadamente algun dato</strong>");
 			           }
 				          
 			   },

@@ -64,14 +64,14 @@ class ObrasControlador
       {
              $con = null;
              $mensaje = null;
-             $codigoObra = $_REQUEST['codigoViejo'];
+             $codigoObra = $_REQUEST['codigoOrg'];
              self::cargarParametros($Obra);
 
              $con = conexion_bd::conectar();
-		     $mensaje = $GestorObras->actualizarObra($Obra,$codigoObra,$con);
-		     conexion_bd::desconectar();
+             $mensaje = $GestorObras->actualizarObra($Obra,$codigoObra,$con);
+	     conexion_bd::desconectar();
 
-		     print $mensaje;
+	     print $mensaje;
       }
 
 

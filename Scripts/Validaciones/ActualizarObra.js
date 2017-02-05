@@ -6,7 +6,7 @@ var codigoOriginal;
 function iniciarDatosActualizar()
 { 
         codigoOriginal = getDataColumn(1);
-        console.log(getDataColumn(1),getDataColumn(3));
+      //  console.log(getDataColumn(1),getDataColumn(3),getDataColumn(10));
         
         $('#ModalAct').modal('show'); 
         cargarOpciones();
@@ -27,12 +27,28 @@ function llenarCampos()
         $('#DtEntrada').val(getDataColumn(6));
         $('#cboxEstilo').text(getDataColumn(14));
         $('#cboxTecnica').text(getDataColumn(13));
+        $("#cboxEstado").val(getValue(getDataColumn(10))).change();
 }
-        
+
+function getValue(data)
+{
+        var options = $('#cboxEstado option');
+
+        var value = $.map(options ,function(option) {
+                  
+                  if(option.text === data)
+                      return option.value;
+         });
+         
+         return value;
+}
+
 function validarActualizarObra()
 {
          var mensajes = "";
 	 
+         console.log("validando datos de entrada para actualizar obra");
+         
 	 $('#DivMensaje').removeClass("alert alert-danger");
 	 $('#DivMensaje').removeClass("alert alert-success");
 	 
@@ -56,7 +72,7 @@ function actualizarObra()
 	
 	
 	$.ajax(  {
- 		       url: urlObrasControlador,
+ 		           url: urlObrasControlador,
 			   type: 'POST',
 			   async: true,
 			    data: { codigo:$('#txtCodigo').val(),codigoOrg: codigoOriginal, nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
@@ -66,7 +82,7 @@ function actualizarObra()
 						accion: 'actualizar'
 			         },
 		            success: function(flag_registro)
-			   { 		
+			   { 	
 			           if(flag_registro == 1)		
 			           {
 			                $('#DivMensaje').removeClass("alert alert-danger");

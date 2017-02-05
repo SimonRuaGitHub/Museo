@@ -4,18 +4,20 @@
 <html>
 <head>
            <title>Inventario Catalogo</title>
-           <!--ESTILOS -->
 	   <link type="text/css" rel ="stylesheet"  href = "../decoradores/Bootstrap_libs/css/bootstrap.min.css"/>
 	   <link type="text/css" rel ="stylesheet"  href = "../decoradores/estiloGestionCatalogo.css"/>
-           <link type="text/css" rel="stylesheet" href="../decoradores/dataTable/css/dataTables.bootstrap.min.css">
-           <link type="text/css" rel="stylesheet" href="../decoradores/dataTable/css/select.bootstrap.css">
-	   <!-- SCRIPTS -->
-           <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+           <link type="text/css" rel ="stylesheet" href="../decoradores/dataTable/css/dataTables.bootstrap.min.css">
+           <link type="text/css" rel ="stylesheet" href="../decoradores/dataTable/css/select.bootstrap.css">
+	
+           <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
+           <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
 	   <script type = "text/javascript" src = "../Scripts/JQuery_libs/jquery-1.11.3.min.js"></script>  
 	   <script type = "text/javascript" src = "../decoradores/Bootstrap_libs/js/bootstrap.min.js"></script>   
 	   <script type = "text/javascript" src = "../Scripts/Validaciones/Tabla.js"></script>
            <script type = "text/javascript" src = "../Scripts/Validaciones/EliminarObra.js"></script>
            <script type = "text/javascript" src = "../Scripts/Validaciones/ActualizarObra.js"></script>
+           <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
            <script src="../Scripts/dataTable/js/jquery.dataTables.min.js"></script>
            <script src="../Scripts/dataTable/js/dataTables.bootstrap.min.js"></script>  
            <script src="../Scripts/dataTable/js/dataTables.select.min.js"></script>
@@ -147,9 +149,9 @@
                                <div class="col-xs-6">
                                     <label for="cboxEstado">Estado:*</label>
                                     <select id="cboxEstado" class="form-control">
-                                       <option value="0">Seleccione</option>
-                                       <option value="1">disponible</option>
-                                       <option value="2">restauracion</option>
+                                         <option value="0">Seleccione</option>
+                                         <option value="1">disponible</option>
+                                         <option value="2">restauracion</option>
                                     </select>
                                </div>
                             </div>
@@ -180,19 +182,20 @@
                                 <input type="date" id="DtEntrada"  min="1910-01-01" class="form-control"/>
                                 <label for="cboxEstilo">Estilo:</label>
                                 <select id="cboxEstilo" class="form-control" onclick="abrirModalEstilo()">
-                                    <option value="seleccione">Seleccione</option>
-                                        <option value="nuevo">Nuevo..</option>
+                                    <option value="0">Seleccione</option>
+                                        <option value="1">Nuevo..</option>
                                 </select>
                                 <label for="cboxTecnica">Tecnica:</label>
                                 <select id="cboxTecnica" class="form-control">
-                                     <option value="seleccione">Seleccione</option>
-                                     <option value="nuevo">Nuevo..</option>
+                                     <option value="0">Seleccione</option>
+                                     <option value="1">Nuevo..</option>
                                 </select>  
                             </div>
                             </div>
                             <div class="form-group col-xs-6">
                               <label for="txaAutores">Autores:</label>
-		              <textarea id="txaAutores" rows = "3" class="form-control"></textarea>   
+		              <textarea id="txaAutores" rows = "3" class="form-control"></textarea>
+                              <br><br>
                               <div id="DivMensaje"></div>
                             </div>
                         </div>
@@ -200,7 +203,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnAceptarAct" onclick="validarActualizarObra()" class="btn btn-primary" data-dismiss="modal">Actualizar obra</button>
+                    <button type="button" id="btnAceptarAct" onclick="validarActualizarObra()" class="btn btn-primary">Actualizar obra</button>
                   <button type="button" class="btn btn-alert" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
