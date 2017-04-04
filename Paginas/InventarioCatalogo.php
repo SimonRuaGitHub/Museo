@@ -11,6 +11,7 @@
 	
            <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
            <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	   <script type = "text/javascript" src = "../Scripts/JQuery_libs/jquery-1.11.3.min.js"></script>  
 	   <script type = "text/javascript" src = "../decoradores/Bootstrap_libs/js/bootstrap.min.js"></script>   
 	   <script type = "text/javascript" src = "../Scripts/Validaciones/Tabla.js"></script>
@@ -26,7 +27,7 @@
            <script src="../Scripts/Validaciones/bloquearCamposNumericosObras.js"></script>
 	   <meta charset = "utf-8">
 </head>
-<body onload="consultarTodasObras()">
+<body onload="consultarTodasObras();cargarOpciones();">
  <header>
     <nav class="navbar navbar-custom">
      <div class="container-fluid">
@@ -119,7 +120,7 @@
          </div>
        </div>
        <!-- Modal Actualizar -->
-      <div class="modal fade" id="ModalAct" role="dialog">
+       <div class="modal fade" id="ModalAct" role="dialog">
          <div class="modal-dialog modal-lg">
              <!-- Modal content-->
              <div class="modal-content">
@@ -128,7 +129,7 @@
                    <h5>Por favor ingrese los siguientes campos para actualizar la obra</h5>
                 </div>
                 <div class="modal-body">         
-                   <form role="form">
+                    <form role="form" onload="hola()">
                      <div class="container-fluid">
                         <div class="row">
                             <div class="form-group col-xs-4">
@@ -181,14 +182,12 @@
                                 <label for="DtEntrada">Fecha de entrada al museo:*</label>
                                 <input type="date" id="DtEntrada"  min="1910-01-01" class="form-control"/>
                                 <label for="cboxEstilo">Estilo:</label>
-                                <select id="cboxEstilo" class="form-control" onclick="abrirModalEstilo()">
-                                    <option value="0">Seleccione</option>
-                                        <option value="1">Nuevo..</option>
+                                <select id="cboxEstilo" class="form-control">
+                                         <option value="0">Seleccione</option>
                                 </select>
                                 <label for="cboxTecnica">Tecnica:</label>
                                 <select id="cboxTecnica" class="form-control">
-                                     <option value="0">Seleccione</option>
-                                     <option value="1">Nuevo..</option>
+                                         <option value="0">Seleccione</option>
                                 </select>  
                             </div>
                             </div>
@@ -204,7 +203,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btnAceptarAct" onclick="validarActualizarObra()" class="btn btn-primary">Actualizar obra</button>
-                  <button type="button" class="btn btn-alert" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-alert" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
          </div>

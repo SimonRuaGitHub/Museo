@@ -74,7 +74,7 @@
 		 <input type="date" id="DtEntrada"  min="1910-01-01" class="form-control"/>
 		 <label for="cboxEstilo">Estilo:</label>
 		 <select id="cboxEstilo" class="form-control" onclick="abrirModalEstilo()">
-		     <option value="seleccione">Seleccione</option>
+		         <option value="seleccione">Seleccione</option>
 			 <option value="nuevo">Nuevo..</option>
 		 </select>
 		 <label for="cboxTecnica">Tecnica:</label>

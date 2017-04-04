@@ -16,7 +16,7 @@ function consultarTodasObras()
                          iniciarPropiedadesTabla();
                 }
 	     }
-         ); 	      
+         );
 }
 
 function llenarTabla(obras)

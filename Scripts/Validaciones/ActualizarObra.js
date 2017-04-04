@@ -3,14 +3,17 @@
  */
 var codigoOriginal;
 
+$('#my-modal').on('hidden.bs.modal', function () {
+  window.alert('hidden event fired!');
+});
+
 function iniciarDatosActualizar()
 { 
-        codigoOriginal = getDataColumn(1);
-      //  console.log(getDataColumn(1),getDataColumn(3),getDataColumn(10));
-        
-        $('#ModalAct').modal('show'); 
-        cargarOpciones();
-        llenarCampos();
+        codigoOriginal = getDataColumn(1);     
+        console.log("Tecnica: " +getDataColumn(13) + "-Estilo: "+getDataColumn(14));
+     
+         $('#ModalAct').modal('show');
+         llenarCampos();
 }
 
 function llenarCampos()
@@ -25,21 +28,29 @@ function llenarCampos()
         $('#txaAutores').text(getDataColumn(11));
         $('#txtCantidad').val(getDataColumn(9));
         $('#DtEntrada').val(getDataColumn(6));
-        $('#cboxEstilo').text(getDataColumn(14));
-        $('#cboxTecnica').text(getDataColumn(13));
-        $("#cboxEstado").val(getValue(getDataColumn(10))).change();
+        $("#cboxEstado option[value='"+getValue(getDataColumn(10),'#cboxEstado')+"']").prop("selected",true);
+        $("#cboxEstilo option[value='"+getValue(getDataColumn(14),'#cboxEstilo')+"']").prop("selected",true);
+        $("#cboxTecnica option[value='"+getValue(getDataColumn(13),'#cboxTecnica')+"']").prop("selected",true);
 }
 
-function getValue(data)
+function getValue(data,selector)
 {
-        var options = $('#cboxEstado option');
+        var options = $(selector +' option');
+        var value = "";
 
-        var value = $.map(options ,function(option) {
+     if(data != "")
+     {
+        value = $.map(options ,function(option) {
                   
                   if(option.text === data)
                       return option.value;
          });
-         
+
+     }
+     else 
+         value=0;
+                  
+         console.log(value);
          return value;
 }
 
@@ -93,7 +104,7 @@ function actualizarObra()
 			           {
                                      $('#DivMensaje').removeClass("alert alert-success");
 	                             $('#DivMensaje').addClass("alert alert-danger");
-	                             $('#DivMensaje').html("<strong>Revise si la obra ya existe</strong>");
+	                             $('#DivMensaje').html("<strong>Revise bien los datos ingresados</strong>");
 			           }
 				          
 			   },
