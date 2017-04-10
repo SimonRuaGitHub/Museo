@@ -117,8 +117,9 @@ function validarFecha()
 }
 
 function validarComboBox(IDcbox) //Estilo y Tecnica unicamente
-{
-	      if($(IDcbox +' option:selected').val() == 'seleccione' || $(IDcbox + ' option:selected').val() == 'nuevo')
+{  
+	      if($(IDcbox +' option:selected').val() == 'seleccione' || $(IDcbox + ' option:selected').val() == 'nuevo'
+                  || $(IDcbox +' option:selected').val() == 0)
 			  return  '';
 		  else
 			  return $(IDcbox +' option:selected').val();

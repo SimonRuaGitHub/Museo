@@ -50,7 +50,6 @@ function getValue(data,selector)
      else 
          value=0;
                   
-         console.log(value);
          return value;
 }
 
@@ -80,8 +79,9 @@ function validarActualizarObra()
 function actualizarObra()
 {
     	var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
-	
-	
+        
+        imprimirDatosEnviados();
+
 	$.ajax(  {
  		           url: urlObrasControlador,
 			   type: 'POST',
@@ -89,8 +89,8 @@ function actualizarObra()
 			    data: { codigo:$('#txtCodigo').val(),codigoOrg: codigoOriginal, nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
 			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo:validarComboBox('#cboxEstilo'), 
 			            tecnica:validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
-						estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
-						accion: 'actualizar'
+				    estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
+				    accion: 'actualizar'
 			         },
 		            success: function(flag_registro)
 			   { 	
@@ -114,4 +114,23 @@ function actualizarObra()
 			   }
 	         }
 		  );
+}
+
+function imprimirDatosEnviados()
+{
+   console.log('codigo: ' + $('#txtCodigo').val()+ '\n' +
+                'codigoOrg: '+ codigoOriginal+ '\n' +
+                'nombre: '+$('#txtNombre').val() + '\n' + 
+                'tipo: '+$('#txtTipo').val() +'\n'+ 
+                'fechaCreacion: '+$('#txtFechaCr').val() + '\n' +
+		'periodo: '+ $('#txtPeriodo').val() + '\n' +
+                'fechaEntrada: '+$('#DtEntrada').val() + '\n'+
+                'estilo: '+validarComboBox('#cboxEstilo') + '\n' +
+		'tecnica: '+validarComboBox('#cboxTecnica') + '\n' +
+                'valor: '+$('#txtValor').val() + '\n' + 
+                'cantidad: '+$('#txtCantidad').val() + '\n'  +
+		'estado: '+$('#cboxEstado option:selected').text() +'\n'+
+                'material: '+$('#txaMaterial').val() +'\n'+
+                'autores: '+$('#txaAutores').val() +'\n'+
+		'accion: '+'actualizar');
 }
