@@ -76,7 +76,7 @@ function validarCamposVacios()
 	if($('#txtPeriodo').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "periodo ";
 
-	if($('txtFechaCr').val() == '')
+	if($('#txtFechaCr').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "Fecha creacion ";
 	 
 	if($('#DtEntrada').val() == '')
