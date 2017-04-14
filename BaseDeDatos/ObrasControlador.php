@@ -20,6 +20,9 @@ switch($opcion)
 
       case "consultar": ObrasControlador::consultarObras($GestorObras);
       break;
+  
+      case "totalObra": ObrasControlador::consultarTotalValorObras($GestorObras);
+      break;
 }
 //-------------------------clase controladora--------------------------------
 class ObrasControlador
@@ -89,8 +92,6 @@ class ObrasControlador
 
      public function eliminarObra($GestorObras)
      {
-     	    $con = null;
-     	    $mensaje = null;
             $codigoObra = $_REQUEST['codigo'];
 
             $con = conexion_bd::conectar();
@@ -98,6 +99,16 @@ class ObrasControlador
 	    conexion_bd::desconectar();
 
 	    print $mensaje;
+     }
+     
+     public function consultarTotalValorObras($GestorObras)
+     {
+            header('Content-type: application/json');
+            $con = conexion_bd::conectar();
+            $response = $GestorObras->consultarTotalValorObras($con);
+	    conexion_bd::desconectar();
+
+	    print json_encode($response);
      }
 }
 

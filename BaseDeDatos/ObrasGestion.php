@@ -64,6 +64,17 @@ class ObrasGestion
 
              return $validador;
      }
+     
+     public function consultarTotalValorObras($conexion)
+     {
+            $query = "SELECT sum(obras.valor) as total FROM obras";
+            
+            $sqlEx =  $conexion -> prepare($query);
+            $sqlEx -> execute();
+            $valortotal = $sqlEx -> fetch(PDO::FETCH_ASSOC);
+            
+            return $valortotal;   
+     }
 }
 
 ?>
