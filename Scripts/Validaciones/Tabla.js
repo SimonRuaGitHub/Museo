@@ -1,5 +1,43 @@
 var table;
 
+function consultarTecnicas()
+{
+    var urlTecnicasControlador = '../BaseDeDatos/TecnicasControlador.php';
+    
+    $.ajax(  {
+                url: urlTecnicasControlador,
+                type: 'POST',
+                async: true,
+                dataType: 'json',
+                data:{ accion:'retornar' },
+                success: function(tecnicas)
+                {
+                         llenarTablaTecnicas(tecnicas);
+                         iniciarPropiedadesTabla('#tblTecnicas');
+                }
+             }
+          );  
+}
+
+function consultarTodosEstilos()
+{
+    var urlEstilosControlador = '../BaseDeDatos/EstilosControlador.php';
+	
+    $.ajax(  {
+                url: urlEstilosControlador,
+                type: 'POST',
+                async: true,
+                dataType: 'json',
+                data:{ accion:'retornar' },
+                success: function(estilos)
+                {
+                          llenarTablaEstilos(estilos);
+                          iniciarPropiedadesTabla('#tblEstilos');
+                }
+	      }
+           ); 	
+}
+
 function consultarTodasObras()
 {
     var url = '../BaseDeDatos/ObrasControlador.php';
@@ -12,14 +50,14 @@ function consultarTodasObras()
                 data:{ accion:'consultar' },
                 success: function(obras)
                 {
-                         llenarTabla(obras);
-                         iniciarPropiedadesTabla();
+                         llenarTablaObras(obras);
+                         iniciarPropiedadesTabla('#tblObras');
                 }
 	     }
          );
 }
 
-function llenarTabla(obras)
+function llenarTablaObras(obras)
 {
     var row;
     
@@ -51,6 +89,54 @@ function llenarTabla(obras)
          	  );
 }
 
+function llenarTablaEstilos(estilos)
+{
+     var row;
+    
+    $(estilos).each(
+         	    function(i , estilo)
+         	    {
+                          ignorarNulosEstilo(estilo);
+                          
+                          row = '<tr id='+estilo.Codigo+' class="clickable-row">\n\
+                                 <td></td>\n\
+                                 <td>'+estilo.Codigo+'</td>\n\
+                                 <td>'+estilo.nombre+'</td>\n\
+                                 <td>'+estilo.descripcion+'</td>\n\
+                                 </tr>';  
+                        
+                          $('#tblEstilos tbody').append(row);
+         	    }         	            
+         	  );
+}
+
+function llenarTablaTecnicas(tecnicas)
+{
+         var row;
+    
+    $(tecnicas).each(
+         	    function(i , tecnica)
+         	    {
+                          ignorarNulosEstilo(tecnica);
+                          
+                          row = '<tr id='+tecnica.codigo+' class="clickable-row">\n\
+                                 <td></td>\n\
+                                 <td>'+tecnica.codigo+'</td>\n\
+                                 <td>'+tecnica.nombre+'</td>\n\
+                                 <td>'+tecnica.descripcion+'</td>\n\
+                                 </tr>';  
+                        
+                          $('#tblTecnicas tbody').append(row);
+         	    }         	            
+         	  );
+}
+
+function ignorarNulosEstilo(estilo)
+{
+    if(estilo.descripcion == null)
+       estilo.descripcion = '';
+}
+
 function ignorarNulos(d)
 {
      if(d.tecnica == null)
@@ -69,9 +155,9 @@ function ignorarNulos(d)
         d.autores = '';
 }
 
-function iniciarPropiedadesTabla()
+function iniciarPropiedadesTabla(tabla)
 {
-        table =   $('#tblObras').DataTable( {
+        table =   $(tabla).DataTable( {
         dataType: 'json',
         columnDefs: [ {
             orderable: false,
@@ -84,8 +170,8 @@ function iniciarPropiedadesTabla()
         },
         order: [[ 1, 'asc' ]]
     } );
-      
-   /*   $( "#aAct" ).click(function() {     
+    
+       /*   $( "#aAct" ).click(function() {     
           cargarDatosObraEmisor(table);
       });*/
 }
