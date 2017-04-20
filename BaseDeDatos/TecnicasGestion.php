@@ -5,7 +5,7 @@ class TecnicasGestion
 
 	  public function consultarTecnicas($conexion)
 	  {
-             $query = "SELECT codigo,nombre FROM tecnicas";
+             $query = "SELECT codigo,nombre,descripcion FROM tecnicas";
 
              $sqlEx =  $conexion -> prepare($query);
              $sqlEx -> execute();

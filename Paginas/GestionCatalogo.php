@@ -21,7 +21,7 @@
 </head>
 <body onload = "cargarOpciones()">
  <header>
-  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-default">
    <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
      <div class="navbar-header">
@@ -39,8 +39,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-	    <li><a id="nvRegistrarObras" class="active" href="http://localhost/Museo/Paginas/GestionCatalogo.php">Registrar Obras</a></li>
-		<li><a id="nvInventarioObras" href="http://localhost/Museo/Paginas/InventarioCatalogo.php">Inventario</a></li>
+	    <li><a id="nvRegistrarObras"  href="GestionCatalogo.php">Registrar Obras</a></li>
+            <li><a id="nvInventarioObras" href="InventarioCatalogo.php">Inventario</a></li>
+            <li><a id="nvEstilos" href="administrarEstilos.php">Estilos</a></li>
+            <li><a id="nvTecnicas" href="administrarTecnicas.php">Tecnicas</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a id = "UsuarioNom"><span class="glyphicon glyphicon-user"></span> &nbsp;<?php print $_SESSION['user_name'] ?></a></li>
@@ -100,7 +102,7 @@
 		</div>
 		<br><br><br>
 		<div class="col-xs-4">
-		   <label for="txtNombre">Cantidad:*</label>
+		   <label for="txtCantidad">Cantidad:*</label>
            <input type="number" id="txtCantidad" min="1"  step="1" onkeypress="esNumeroNatural(event)" class="form-control"/>
 		   </br>
 		</div>

@@ -38,7 +38,7 @@ function llenarOpcionesEstilos(estilos)
          $(estilos).each(
          	                function(i , v)
          	                {
-                                    $('#cboxEstilo').append('<option value="'+v.codigo+'">'+v.nombre+'</option>');
+                                    $('#cboxEstilo').append('<option value="'+v.Codigo+'">'+v.nombre+'</option>');
          	                }         	            
          	            )
 

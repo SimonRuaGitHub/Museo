@@ -64,7 +64,7 @@ class TecnicasControlador
 
        	     $nombre = $_REQUEST['nombre'];
        	     $Tecnica->setNombre($_REQUEST['nNombre']);
-       	     $Tecnica->setDescripcion($_REQUEST['nDescripcion']);
+       	     $Tecnica->setDescripcion($_REQUEST['nDescripcion'] == "" ? null:$_REQUEST['nDescripcion']);
 
        	     $conexion = conexion_bd::conectar();
        	     $validador = $gTecnicas -> actualizarTecnica($Tecnica,$conexion,$nombre); //validador de insercion

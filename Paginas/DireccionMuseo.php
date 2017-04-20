@@ -47,9 +47,7 @@
               <div class="col-12">
                 <hr>
               </div>
-              <div class="col-xs-5">
-                <input id="txtValorTotal" type="text" class="form-control" placeholder="valor total obras">
-              </div>
+              <input id="txtValorTotal" type="text" class="form-control" placeholder="valor total obras" readonly>
           </div>
         </div>
       </div>

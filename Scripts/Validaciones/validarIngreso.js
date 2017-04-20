@@ -29,7 +29,7 @@ function validarDatos()
 function validarIngreso()
 {
 	var urlControlUsurios = '../BaseDeDatos/UsuarioControlador.php';
-	
+        
 	$.ajax(  {
  		       url: urlControlUsurios,
 			   type: 'POST',

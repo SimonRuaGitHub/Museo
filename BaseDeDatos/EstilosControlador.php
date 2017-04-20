@@ -63,12 +63,12 @@ class EstilosControlador
        {
        	     $estilo = new Estilos();
 
-       	     $nombre = $_REQUEST['nombre'];
+             $estilo->setCodigo($_REQUEST['codigo']);
        	     $estilo->setNombre($_REQUEST['nNombre']);
-       	     $estilo->setDescripcion($_REQUEST['nDescripcion']);
+       	     $estilo->setDescripcion($_REQUEST['nDescripcion'] == "" ? null:$_REQUEST['nDescripcion']);
 
        	     $conexion = conexion_bd::conectar();
-       	     $validador = $gEstilos -> actualizarEstilo($estilo,$conexion,$nombre); //validador de insercion
+       	     $validador = $gEstilos -> actualizarEstilo($estilo,$conexion); //validador de insercion
        	     conexion_bd::desconectar();
                
              print $validador;   

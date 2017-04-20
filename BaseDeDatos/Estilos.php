@@ -5,6 +5,16 @@ class Estilos
       private $codigo;
       private $nombre;
       private $descripcion;
+      
+      public function setCodigo($codigo)
+      {
+             $this->codigo = $codigo;
+      }
+      
+     public function getCodigo()
+      {
+             return $this->codigo;
+      }
 
       public function setNombre($nombre)
       {

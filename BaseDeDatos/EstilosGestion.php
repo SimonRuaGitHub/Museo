@@ -5,7 +5,7 @@ class EstilosGestion
 
 	  public function consultarEstilos($conexion)
 	  {
-             $query = "SELECT codigo , nombre FROM estilos";
+             $query = "SELECT * FROM estilos";
 
              $sqlEx =  $conexion -> prepare($query);
              $sqlEx -> execute();
@@ -34,13 +34,13 @@ class EstilosGestion
             return "true";
       }
 
-      public function actualizarEstilo($estilo,$conexion,$nombre)
+      public function actualizarEstilo($estilo,$conexion)
       {
              $ins = "UPDATE estilos  SET nombre = :nuevoNom , descripcion = :nuevaDesc
-                     WHERE nombre = :nombre";
+                     WHERE codigo = :codigo";
 
              $sqlEx = $conexion -> prepare($ins);
-             $sqlEx -> bindParam(':nombre' , $nombre);
+             $sqlEx -> bindParam(':codigo' , $estilo->getCodigo());
              $sqlEx -> bindParam(':nuevoNom' , $estilo->getNombre());
              $sqlEx -> bindParam(':nuevaDesc' , $estilo->getDescripcion());
              $sqlEx -> execute();
