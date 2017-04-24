@@ -2,7 +2,12 @@
 class conexion_bd
 {   
       private static $connect;
+      private static $connected;
 
+      /**
+       * 
+       * @return PDO
+       */
       public static function conectar()
       {
       	  if(!isset(self::$connect))
@@ -12,11 +17,13 @@ class conexion_bd
       	        include 'config_conexion.php'; 
       	       	self::$connect = new PDO("mysql:host=$host_name; dbname=$database_name",$user_name, $password); //Becarefull with "=" can not be seperated from the parameter name like host and dbname, the same happens with the value parameters they have to be together like you are seeing it.
       	        self::$connect -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-      	        self::$connect -> exec("SET CHARACTER SET utf8");         
+      	        self::$connect -> exec("SET CHARACTER SET utf8");   
+                self::$connected = TRUE;
       	     }
       	     catch(PDOException $ex)
       	     {
-      	     	     print 'conexion fallida </br>';
+                   self::$connected = FALSE;
+      	     	   print 'conexion fallida </br>';
                    print "ERROR: ". $ex -> getMessage() ."</br>";
                    die();
       	     }    	          	  	
@@ -30,7 +37,13 @@ class conexion_bd
              if(isset(self::$connect))
              {
                 self::$connect = null;
+                self::$connected = FALSE;
              }
+      }
+      
+      public static function getConnected()
+      {
+              return self::$connected;
       }
 }
 ?>

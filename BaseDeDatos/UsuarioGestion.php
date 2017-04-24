@@ -47,7 +47,7 @@ class UsuarioGestion
 
              $sqlEx = $conexion -> prepare($ins);
              $sqlEx -> bindParam(':usuario' , $Usuario->getNombreUsuario());
-			 $sqlEx -> bindParam(':contrasena' , $Usuario->getContrasena());
+	     $sqlEx -> bindParam(':contrasena' , $Usuario->getContrasena());
              $sqlEx -> execute();
          
              return "true";
