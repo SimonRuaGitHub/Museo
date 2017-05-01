@@ -1,5 +1,5 @@
 projectKey=Museo
 serverUrl=http://localhost:9000
 dashboardUrl=http://localhost:9000/dashboard/index/Museo
-ceTaskId=AVu7qtUbeQDkZ5OvW9kO
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVu7qtUbeQDkZ5OvW9kO
+ceTaskId=AVvAvqC-RbnzhiTYwllk
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVvAvqC-RbnzhiTYwllk

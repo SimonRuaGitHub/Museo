@@ -1,21 +1,19 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Script para actualizar los campos de un Estilo
  */
 function iniciarDatosActualizarEstilo()
 {    
-        console.log("Codigo: " +getDataColumn(1) + "-Nombre: "+getDataColumn(2));
+        console.log("Codigo: " +this.getDataColumn(1) + "-Nombre: "+this.getDataColumn(2));
         
         $('#ModalAct').modal('show');
-        llenarCamposEstilo();
+        this.llenarCamposEstilo();
 }
 
 function llenarCamposEstilo()
 {
-        $('#txtCodigo').val(getDataColumn(1));
-        $('#txtNombre').val(getDataColumn(2));
-        $('#txaDescripcion').val(getDataColumn(3));
+        $('#txtCodigo').val(this.getDataColumn(1));
+        $('#txtNombre').val(this.getDataColumn(2));
+        $('#txaDescripcion').val(this.getDataColumn(3));
 }
 
 function validarActulizarEstilo()
@@ -37,7 +35,7 @@ function validarActulizarEstilo()
          }
          else
          {
-             actualizarEstilo();
+             this.actualizarEstilo();
          }
          
 }

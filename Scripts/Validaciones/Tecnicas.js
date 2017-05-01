@@ -1,30 +1,28 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+   Script para actualizar, eliminar y crear tecnica
  */
 var nombre;
 
 function iniciarActualizarTecnica()
 {
-        console.log("Codigo: " +getDataColumn(1) + "-Nombre: "+getDataColumn(2));
+        console.log("Codigo: " +this.getDataColumn(1) + "-Nombre: "+this.getDataColumn(2));
         
-        nombre = getDataColumn(2);
+        nombre = this.getDataColumn(2);
         
         $('#ModalAct').modal('show');
-        llenarCamposTecnica();
+        this.llenarCamposTecnica();
 }
 
 function llenarCamposTecnica()
 {
-        $('#txtCodigo').val(getDataColumn(1));
-        $('#txtNombre').val(getDataColumn(2));
-        $('#txaDescripcion').val(getDataColumn(3));
+        $('#txtCodigo').val(this.getDataColumn(1));
+        $('#txtNombre').val(this.getDataColumn(2));
+        $('#txaDescripcion').val(this.getDataColumn(3));
 }
 
 function validarActulizarTecnica()
 {
-        var mensaje = "";
+        var mensaje="";
 	 
          console.log("validando datos de entrada para actualizar tecnica de obra");
          
@@ -41,7 +39,7 @@ function validarActulizarTecnica()
          }
          else
          {
-             actualizarTecnica();
+             this.actualizarTecnica();
          }
 }
 
@@ -82,7 +80,7 @@ function actualizarTecnica()
 
 function iniciarEliminarTecnica()
 {
-    $('#txtNombreElim').val(getDataColumn(2));
+    $('#txtNombreElim').val(this.getDataColumn(2));
     $('#ModalEliminar').modal('show');
 }
 
@@ -145,7 +143,7 @@ function validarAdicionTecnica()
          }
          else
          {
-             adicionarTecnica();
+             this.adicionarTecnica();
          }
 }
 

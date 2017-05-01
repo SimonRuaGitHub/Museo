@@ -78,8 +78,7 @@
 		  <label for="txaAutores">Autores:</label>
 		  <textarea id="txaAutores" rows = "3" class="form-control"></textarea>
 		  <br>
-		  <input type="button" id="btnRegistrarObra" onclick="validarDatos()" class="btn btn-success animation-custom" value="Registrar Obra"/>
-		<!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ModalEstilo">Open Modal</button> -->
+                  <input type="button" id="btnRegistrarObra" onclick="validarRegistrarObra()" class="btn btn-success animation-custom" value="Registrar Obra"/>
 		  <br><br>
 		  <div id = "DivMensaje"></div>
 		</div>

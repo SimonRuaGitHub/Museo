@@ -1,12 +1,12 @@
-function validarDatos()
+function validarRegistrarObra()
 {	
-     var mensajes = "";
+         var mensajes = "";
 	 
 	 $('#DivMensaje').removeClass("alert alert-danger");
 	 $('#DivMensaje').removeClass("alert alert-success");
 	 
-         mensajes = validarCamposVacios();
-	 mensajes += (mensajes != "" ? '<br>': "") + validarFecha();
+         mensajes = this.validarCamposVacios();
+	 mensajes += (mensajes != "" ? '<br>': "") + this.validarFecha();
 	 	 
 	 if(mensajes != "")
 	 {
@@ -15,12 +15,12 @@ function validarDatos()
          }
 	 else
          {
-		 validarRegistrarObras();
+		 this.RegistrarObra();
 	 }     
 }
 
 
-function validarRegistrarObras()
+function RegistrarObra()
 {
 	var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
 	
@@ -30,8 +30,8 @@ function validarRegistrarObras()
 			   type: 'POST',
 			   async: true,
 			    data: { codigo:$('#txtCodigo').val(), nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
-			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo:validarComboBox('#cboxEstilo'), 
-			            tecnica:validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
+			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo: this.validarComboBox('#cboxEstilo'), 
+			            tecnica: this.validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
 						estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
 						accion: 'insertar'
 			         },
@@ -62,12 +62,12 @@ function validarRegistrarObras()
 /*Valida los campos obligatorios para registrar la obra*/
 function validarCamposVacios()
 {
-	var mjCamposVacios = "";
+	var mjCamposVacios="";
 		 
 	if($('#txtCodigo').val() == '')
 	   mjCamposVacios += "el codigo de la obra ";
 
-    if($('#txtNombre').val() == '')
+        if($('#txtNombre').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '-': "") + "nombre de la obra ";
 	 
 	if($('#txtTipo').val() == '')
@@ -82,32 +82,31 @@ function validarCamposVacios()
 	if($('#DtEntrada').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "fecha de entrada al museo ";
 	 
-    if($('#txtValor').val() == '')
+        if($('#txtValor').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "valor  ";
 	 
 	if($('#txtCantidad').val() == '')
 	   mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "cantidad ";
 	 
 	 if($('#cboxEstado option:selected').val() == 0)
-		 mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "un estado ";
+             mjCamposVacios += (mjCamposVacios != "" ? '- ': "") + "un estado ";
  
 	     return mjCamposVacios;
 }
 
 function validarFecha()
 {
-	  var mjFechaInvalida = "";
-	  var fechaEntrada = null;
+	  var mjFechaInvalida="";
 	  var fechaActual = new Date();
-	  var añoMuseo = 1910; 
+          var añoMuseo = 1910; 
 	  
 	  if($('#DtEntrada').val() != '')
 	  {
-		 fechaEntrada = new Date($('#DtEntrada').val());
+		 var fechaEntrada = new Date($('#DtEntrada').val());
 		 if(fechaEntrada.getFullYear() > fechaActual.getFullYear() || fechaEntrada.getMonth() > fechaActual.getMonth() 
 			 || fechaEntrada.getDate() > fechaActual.getDate())
 	     {
-			 if(fechaEntrada.getFullYear() < 1910)
+			 if(fechaEntrada.getFullYear() < añoMuseo)
 			    mjFechaInvalida = "Fecha de entrada al museo invalida";		 
 		 }
 			

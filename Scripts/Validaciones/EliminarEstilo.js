@@ -5,7 +5,7 @@
  */
 function iniciarEliminarEstilo()
 {
-    $('#txtNombreElim').val(getDataColumn(2));
+    $('#txtNombreElim').val(this.getDataColumn(2));
     $('#ModalEliminar').modal('show');
 }
 

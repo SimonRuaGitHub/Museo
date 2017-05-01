@@ -28,7 +28,7 @@ function validarAdicionEstilo()
          }
          else
          {
-             adicionarEstilo();
+             this.adicionarEstilo();
          }
 }
 

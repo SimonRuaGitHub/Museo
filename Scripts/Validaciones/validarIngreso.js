@@ -22,7 +22,7 @@ function validarDatos()
 	 }
 	 else
 	 {
-		 validarIngreso();
+		this.validarIngreso();
 	 }
 }
 

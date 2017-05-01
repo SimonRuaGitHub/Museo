@@ -9,8 +9,8 @@ $('#my-modal').on('hidden.bs.modal', function () {
 
 function iniciarDatosActualizar()
 { 
-        codigoOriginal = getDataColumn(1);     
-        console.log("Tecnica: " +getDataColumn(13) + "-Estilo: "+getDataColumn(14));
+        codigoOriginal = this.getDataColumn(1);     
+        console.log("Tecnica: " +this.getDataColumn(13) + "-Estilo: "+this.getDataColumn(14));
      
          $('#ModalAct').modal('show');
          llenarCampos();
@@ -19,24 +19,24 @@ function iniciarDatosActualizar()
 function llenarCampos()
 {
         $('#txtCodigo').val(codigoOriginal);
-        $('#txtValor').val(getDataColumn(8));
-        $('#txtNombre').val(getDataColumn(3));
-        $('#txtTipo').val(getDataColumn(2));
-        $('#txtFechaCr').val(getDataColumn(4));
-        $('#txtPeriodo').val(getDataColumn(5));
-        $('#txaMaterial').text(getDataColumn(7));
-        $('#txaAutores').text(getDataColumn(11));
-        $('#txtCantidad').val(getDataColumn(9));
-        $('#DtEntrada').val(getDataColumn(6));
-        $("#cboxEstado option[value='"+getValue(getDataColumn(10),'#cboxEstado')+"']").prop("selected",true);
-        $("#cboxEstilo option[value='"+getValue(getDataColumn(14),'#cboxEstilo')+"']").prop("selected",true);
-        $("#cboxTecnica option[value='"+getValue(getDataColumn(13),'#cboxTecnica')+"']").prop("selected",true);
+        $('#txtValor').val(this.getDataColumn(8));
+        $('#txtNombre').val(this.getDataColumn(3));
+        $('#txtTipo').val(this.getDataColumn(2));
+        $('#txtFechaCr').val(this.getDataColumn(4));
+        $('#txtPeriodo').val(this.getDataColumn(5));
+        $('#txaMaterial').text(this.getDataColumn(7));
+        $('#txaAutores').text(this.getDataColumn(11));
+        $('#txtCantidad').val(this.getDataColumn(9));
+        $('#DtEntrada').val(this.getDataColumn(6));
+        $("#cboxEstado option[value='"+getValue(this.getDataColumn(10),'#cboxEstado')+"']").prop("selected",true);
+        $("#cboxEstilo option[value='"+getValue(this.getDataColumn(14),'#cboxEstilo')+"']").prop("selected",true);
+        $("#cboxTecnica option[value='"+getValue(this.getDataColumn(13),'#cboxTecnica')+"']").prop("selected",true);
 }
 
 function getValue(data,selector)
 {
         var options = $(selector +' option');
-        var value = "";
+        var value="";
 
      if(data != "")
      {
@@ -62,8 +62,8 @@ function validarActualizarObra()
 	 $('#DivMensaje').removeClass("alert alert-danger");
 	 $('#DivMensaje').removeClass("alert alert-success");
 	 
-         mensajes = validarCamposVacios();
-	 mensajes += (mensajes != "" ? '<br>': "") + validarFecha();
+         mensajes = this.validarCamposVacios();
+	 mensajes += (mensajes != "" ? '<br>': "") + this.validarFecha();
 	 	 
 	 if(mensajes != "")
 	 {
@@ -72,7 +72,7 @@ function validarActualizarObra()
          }
 	 else
          {
-              actualizarObra();
+              this.actualizarObra();
 	 }   
 }
 
@@ -80,15 +80,15 @@ function actualizarObra()
 {
     	var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
         
-        imprimirDatosEnviados();
-
+        this.imprimirDatosEnviados();
+        
 	$.ajax(  {
  		           url: urlObrasControlador,
 			   type: 'POST',
 			   async: true,
 			    data: { codigo:$('#txtCodigo').val(),codigoOrg: codigoOriginal, nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
-			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo:validarComboBox('#cboxEstilo'), 
-			            tecnica:validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
+			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo:this.validarComboBox('#cboxEstilo'), 
+			            tecnica:this.validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
 				    estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
 				    accion: 'actualizar'
 			         },
@@ -125,8 +125,8 @@ function imprimirDatosEnviados()
                 'fechaCreacion: '+$('#txtFechaCr').val() + '\n' +
 		'periodo: '+ $('#txtPeriodo').val() + '\n' +
                 'fechaEntrada: '+$('#DtEntrada').val() + '\n'+
-                'estilo: '+validarComboBox('#cboxEstilo') + '\n' +
-		'tecnica: '+validarComboBox('#cboxTecnica') + '\n' +
+                'estilo: '+this.validarComboBox('#cboxEstilo') + '\n' +
+		'tecnica: '+this.validarComboBox('#cboxTecnica') + '\n' +
                 'valor: '+$('#txtValor').val() + '\n' + 
                 'cantidad: '+$('#txtCantidad').val() + '\n'  +
 		'estado: '+$('#cboxEstado option:selected').text() +'\n'+
