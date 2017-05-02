@@ -1,7 +1,4 @@
-/*
-  Hecho por: Simon Felipe Rua Vargas
-  Fecha: 28/02/2016
-*/
+
 /*
   Parametro: evt
   Descripcion: verifica continuamente el codigo ascii de los caracteres ingresado por teclas

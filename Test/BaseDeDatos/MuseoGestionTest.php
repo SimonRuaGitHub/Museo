@@ -39,10 +39,10 @@ class MuseoGestionTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testRegistrarMuseo().
      */
     public function testRegistrarMuseo() {
-        $actual = TRUE;
+        $expected = TRUE;
 
         $museo = new Museo('9823431', 'Museo de Arte Antonio Nariño');
-        $expected = $this->gestor->registrarMuseo($museo, $this->conexion);
+        $actual = $this->gestor->registrarMuseo($museo, $this->conexion);
 
         $this->assertEquals($expected, $actual);
     }
@@ -53,10 +53,10 @@ class MuseoGestionTest extends PHPUnit_Framework_TestCase {
      * @depends testRegistrarMuseo
      */
     public function testEliminarMuseo() {
-        $actual = TRUE;
+        $expected = TRUE;
         $museo = new Museo('9823431', 'Museo de Arte Antonio Nariño');
 
-        $expected = $this->gestor->eliminarMuseo($museo->getNit(), $this->conexion);
+        $actual = $this->gestor->eliminarMuseo($museo->getNit(), $this->conexion);
 
         $this->assertEquals($expected, $actual);
     }
@@ -68,11 +68,11 @@ class MuseoGestionTest extends PHPUnit_Framework_TestCase {
      */
         public function testActualizarMuseo() 
         {
-            $actual = TRUE;
+            $expected = TRUE;
             $museo = new Museo(9823432, 'Museo de Arte Antonio Nariño');
             $nit = 9823431;
 
-            $expected = $this->gestor->actualizarMuseo($nit, $museo, $this->conexion);
+            $actual = $this->gestor->actualizarMuseo($nit, $museo, $this->conexion);
 
             $this->assertEquals($expected, $actual);    
         }

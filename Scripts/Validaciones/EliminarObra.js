@@ -7,8 +7,8 @@
 
 function iniciarDatosEliminar()
 { 
-     var nombre = getDataColumn(3);     
-     var codigo = getDataColumn(1);
+     var nombre = this.getDataColumn(3);     
+     var codigo = this.getDataColumn(1);
      
      console.log(codigo.toString()+":"+nombre.toString());
       

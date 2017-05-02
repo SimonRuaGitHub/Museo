@@ -12,7 +12,6 @@ class conexion_bdTest extends PHPUnit_Framework_TestCase
     public function testConectar()
     {
          $expected = TRUE;
-         $actual = null;
          
          conexion_bd::conectar();
          $actual = conexion_bd::getConnected();
