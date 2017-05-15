@@ -68,7 +68,7 @@ class RestauradoresGestionTest extends PHPUnit_Framework_TestCase {
         $expected = TRUE;
 
         $cedula = 189913532;
-        $restaurador = new Restauradores(189913100, 'Juan Ruiz', 3172329001, 'ruiz@lucky.com', 'Velasquez');
+        $restaurador = new Restauradores(189913100, 'Juan Ruiz', 3172329001, 'velasquez@lucky.com', 'Velasquez');
 
         $actual = $this->gestor->actualizarRestaurador($restaurador, $cedula, $this->conexion);
 

@@ -51,7 +51,7 @@ function validarIngreso()
                                                            case 'encargado catalogo': window.location = 'GestionCatalogo.php';
                                                            break;
 
-                                                           case 'restaurador': window.location = 'Restauracion.php';
+                                                           case 'restaurador': window.location = 'RestauracionMuseo.php';
                                                            break;
                                   
                                                            case 'director': window.location = "DireccionMuseo.php";

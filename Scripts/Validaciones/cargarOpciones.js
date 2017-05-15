@@ -72,7 +72,7 @@ function llenarOpcionesTecnicas(tecnicas)
                         )
 
 }
-
+ 
 function cargarComponentesCompatibles()
 {
       if ( $('#DtEntrada').prop('type') != 'date' ) 
