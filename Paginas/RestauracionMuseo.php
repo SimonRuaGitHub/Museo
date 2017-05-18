@@ -84,7 +84,7 @@
                   <input type="email" class="form-control" id="Correo">
                   <label id="infoCorreo"></label>
                 </div>
-                <button class="btn btn-default" onclick="validarRegistro()">Registrar <span class="glyphicon glyphicon-pencil"></span></button>
+                  <button type="button" class="btn btn-default" onclick="validarRegistro()">Registrar <span class="glyphicon glyphicon-pencil"></span></button>
                 <br>
                 <br>
                 <label id="mensaje"></label>
