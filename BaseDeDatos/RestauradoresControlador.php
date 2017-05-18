@@ -5,11 +5,11 @@
  * de los Restauradores
  */
 require('./Restauradores.php');
-require('./RestauradoresGestion.php');
+require('./RestauradorDAO.php');
 require('./conexion_bd.php');
 
 
-$gestor = new RestauradoresGestion();
+$gestor = new RestauradorDAO();
 $opcion = $_REQUEST['accion'];
 
 switch($opcion)

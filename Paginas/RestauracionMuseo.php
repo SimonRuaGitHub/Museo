@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title> Restauradores </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel ="stylesheet"  href = "../decoradores/Bootstrap_libs/css/bootstrap.min.css"/>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
@@ -86,9 +87,6 @@
                 <button class="btn btn-default" onclick="validarRegistro()">Registrar <span class="glyphicon glyphicon-pencil"></span></button>
                 <br>
                 <br>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 100%;" id="pBar">100% Complete</div>
-                </div>
                 <label id="mensaje"></label>
               </div>
               <div class=" col-sm-3 "></div>
