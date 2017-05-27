@@ -12,46 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type = "text/javascript" src = "../Scripts/JQuery_libs/jquery-1.11.3.min.js"></script>  
     <script type = "text/javascript" src = "../decoradores/Bootstrap_libs/js/bootstrap.min.js"></script>
-    <script type = "text/javascript" src = "../Scripts/Validaciones/RestauradoresMuseo.js"></script> 
+    <script type = "text/javascript" src = "../Scripts/Validaciones/validarRegistroRestaurador.js"></script> 
     <script type = "text/javascript" src = "../Scripts/Validaciones/bloquearCamposNumericosObras.js"></script>
-    <link href="../decoradores/decoracionRestaurador.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <ul class="nav navbar-nav navbar-left">
-            <a class="navbar-brand" href="#"><span>MuseumLucky</span></a>
-            <li class="active">
-              <a href="#">Registro Restaurador</a>
-            </li>
-            <li>
-              <a href="#">Listado</a>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#"><span class="glyphicon glyphicon-user"></span> <?php print $_SESSION['user_name'] ?></a>
-            </li>
-            <li>
-              <form class="navbar-form navbar-left">
-                <a id="btnCerrarSesion" class="btn btn-danger" href="CerrarSesion.php">
-                   <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Cerrar sesion
-                </a>
-             </form>  
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <?php include './Template/HeaderJF.php' ?>
     <div class="section">
       <div class="container">
         <div class="row">
@@ -84,7 +49,7 @@
                   <input type="email" class="form-control" id="Correo">
                   <label id="infoCorreo"></label>
                 </div>
-                  <button type="button" class="btn btn-default" onclick="validarRegistro()">Registrar <span class="glyphicon glyphicon-pencil"></span></button>
+                  <button type="button" class="btn btn-primary" onclick="validarRegistro()">Registrar <span class="glyphicon glyphicon-pencil"></span></button>
                 <br>
                 <br>
                 <label id="mensaje"></label>

@@ -3,21 +3,21 @@ require('./conexion_bd.php');
 require('./MuseoGestion.php');
 require('./Museo.php');
 
-$gestor = new MuseoGestion();
+$gestorDAO = new MuseoGestion();
 $opcion = $_REQUEST['accion'];
 
 switch($opcion)
 {
-       case 'retornarTodos': MuseoControlador::buscarMuseos($gestor);
+       case 'retornarTodos': MuseoControlador::buscarMuseos($gestorDAO);
        break;
    
-       case 'registrar': MuseoControlador::registrarMuseo($gestor);
+       case 'registrar': MuseoControlador::registrarMuseo($gestorDAO);
        break;
    
-       case 'eliminar': MuseoControlador::eliminarMuseo($gestor);
+       case 'eliminar': MuseoControlador::eliminarMuseo($gestorDAO);
        break;
    
-       case 'actualizar': MuseoControlador::actualizarMuseo($gestor);
+       case 'actualizar': MuseoControlador::actualizarMuseo($gestorDAO);
        break;    
 }
 

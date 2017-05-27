@@ -12,7 +12,7 @@ class RestauradorDAO
                                  . "SET `Cedula`= ?, `Nombres`= ?, `Telefono` = ?, `Correo` = ?, `Apellidos`= ? "
                                  . "WHERE `Cedula` = ?";
       private static $ST_DELETE="DELETE FROM restauradores WHERE cedula = ?";
-      private static $QUERY_ALL="SELECT * FROM restauradores";
+      private static $ST_QUERY_ALL="SELECT * FROM restauradores";
       private $dataManager;
       
       function __construct() 
@@ -70,5 +70,18 @@ class RestauradorDAO
               
               return $val;
       }
+     
+      /**
+       * 
+       * @param type $con
+       * @return type 
+       */
+      public function consultarTodosRestauradores($con)
+      {
+             $infoRestauradores = $this->dataManager->executeStatementGetAll($con, self::$ST_QUERY_ALL);
+             
+             return $infoRestauradores;
+      }
+      
 
 }

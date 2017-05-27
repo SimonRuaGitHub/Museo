@@ -9,22 +9,25 @@ require('./RestauradorDAO.php');
 require('./conexion_bd.php');
 
 
-$gestor = new RestauradorDAO();
+$gestorDAO = new RestauradorDAO();
 $opcion = $_REQUEST['accion'];
 
 switch($opcion)
 {
-       case 'registrar':RestauradoresControlador::registrarRestaurador($gestor);
+       case 'registrar':RestauradoresControlador::registrarRestaurador($gestorDAO);
        break;
        
-       case 'eliminar':RestauradoresControlador::eliminarRestaurador($gestor);
+       case 'eliminar':RestauradoresControlador::eliminarRestaurador($gestorDAO);
        break;
    
-       case 'actualizar':RestauradoresControlador::actualizarRestuarador($gestor);
+       case 'actualizar':RestauradoresControlador::actualizarRestuarador($gestorDAO);
        break; 
    
-       case 'consultarTodos':RestauradoresControlador::consultarRestauradores($gestor);
+       case 'consultarTodos':RestauradoresControlador::consultarRestauradores($gestorDAO);
        break; 
+   
+       case 'test': print 'sucessful connection with service';
+       break;
 }
 //----------------------clase controladora--------------------------------------
 class RestauradoresControlador
@@ -83,6 +86,12 @@ class RestauradoresControlador
        
        public function consultarRestauradores($gestor)
        {
-           
+              header('Content-type: application/json');
+              
+              $con = conexion_bd::conectar();
+              $response = $gestor->consultarTodosRestauradores($con);
+              conexion_bd::desconectar();
+              
+              print json_encode($response);
        }
 }
