@@ -4,14 +4,15 @@ class ObrasGestion
 {
 	 public function registrarObra($obra,$conexion)
 	 {
-            $ins = "INSERT INTO obras(ID,tipo, nombre,fecha_creacion,periodo,fecha_entrada,material,valor,cantidad,estado,autores,cod_tecnica,cod_estilo) 
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $ins = "INSERT INTO obras(ID,tipo, nombre,fecha_creacion,periodo,fecha_entrada,material,valor,cantidad,estado,autores,cod_tecnica,cod_estilo,sala) 
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             $sqlEx = $conexion -> prepare($ins);
             $sqlEx -> execute(array( 
                                        $obra->getCodigo(),$obra->getTipo(), $obra->getNombre(),$obra->getFechaCreacion(),
             	                       $obra->getPeriodo(),$obra->getFechaEntrada(),$obra->getMaterial(),$obra->getValor(),
-            	                       $obra->getCantidad(),$obra->getEstado(),$obra->getAutor(),$obra->getTecnica(),$obra->getEstilo()
+            	                       $obra->getCantidad(),$obra->getEstado(),$obra->getAutor(),$obra->getTecnica(),$obra->getEstilo(),
+                                       $obra->getSala()
             	                   )
                       );     
 
@@ -23,7 +24,7 @@ class ObrasGestion
               $query = "SELECT obras.ID, obras.tipo, obras.nombre, obras.fecha_creacion, obras.periodo, 
                                obras.fecha_entrada, obras.material, obras.valor, obras.cantidad, 
                                obras.estado, obras.autores, museos.nombre AS museo,
-                               tecnicas.nombre AS tecnica , estilos.nombre AS estilo
+                               tecnicas.nombre AS tecnica , estilos.nombre AS estilo, sala
                         FROM obras 
                         LEFT JOIN tecnicas ON obras.cod_tecnica = tecnicas.codigo
                         LEFT JOIN estilos ON obras.cod_estilo = estilos.Codigo
@@ -40,7 +41,7 @@ class ObrasGestion
      {
              $ins = "UPDATE obras  SET ID = ?,tipo = ?,nombre = ?,fecha_creacion = ?
                                        ,periodo = ?,fecha_entrada = ?,material = ?,valor = ?
-                                       ,cantidad = ?,estado = ?,autores = ?,cod_tecnica = ?,cod_estilo = ?
+                                       ,cantidad = ?,estado = ?,autores = ?,cod_tecnica = ?,cod_estilo = ?,sala = ?
                      WHERE ID = ?";
 
              $sqlEx = $conexion -> prepare($ins);
@@ -48,6 +49,7 @@ class ObrasGestion
                                        $Obra->getCodigo(),$Obra->getTipo(), $Obra->getNombre(),$Obra->getFechaCreacion(),
                                        $Obra->getPeriodo(),$Obra->getFechaEntrada(),$Obra->getMaterial(),$Obra->getValor(),
                                        $Obra->getCantidad(),$Obra->getEstado(),$Obra->getAutor(),$Obra->getTecnica(),$Obra->getEstilo(),
+                                       $Obra->getSala(),
                                        $codigo
                                    ));
 

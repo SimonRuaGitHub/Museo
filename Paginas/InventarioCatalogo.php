@@ -56,9 +56,9 @@
               <th>Cantidad</th>
               <th>Estado</th>
               <th>Autores</th>
-              <th>Museo</th>
               <th>Tecnica</th>
               <th>Estilo</th>
+              <th>Sala</th>
             </tr>
           </thead>
           <tbody>
@@ -160,6 +160,9 @@
                             <div class="form-group col-xs-6">
                               <label for="txaAutores">Autores:</label>
 		              <textarea id="txaAutores" rows = "3" class="form-control"></textarea>
+                              <br>
+                              <label for="txtSala">Sala:</label>
+                              <input type="text" class="form-control" id="txtSala">
                               <br><br>
                               <div id="DivMensaje"></div>
                             </div>

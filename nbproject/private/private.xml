@@ -6,18 +6,17 @@
             <url>Scripts/Validaciones/MantenerRestauradores.js</url>
             <bookmark id="1">
                 <name/>
-                <line>18</line>
+                <line>57</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Museo/Scripts/Validaciones/MantenerRestauradores.js</file>
-            <file>file:/C:/xampp/htdocs/Museo/Paginas/administrarTecnicas.php</file>
-            <file>file:/C:/xampp/htdocs/Museo/Paginas/ListadoRestauradores.php</file>
-            <file>file:/C:/xampp/htdocs/Museo/Scripts/Validaciones/Tecnicas.js</file>
-            <file>file:/C:/xampp/htdocs/Museo/BaseDeDatos/RestauradoresControlador.php</file>
+            <file>file:/C:/xampp/htdocs/Museo/Paginas/InventarioCatalogo.php</file>
+            <file>file:/C:/xampp/htdocs/Museo/Scripts/Validaciones/validarRegistroObras.js</file>
+            <file>file:/C:/xampp/htdocs/Museo/Paginas/FotoObras.php</file>
+            <file>file:/C:/xampp/htdocs/Museo/Scripts/Validaciones/Tabla.js</file>
             <file>file:/C:/xampp/htdocs/Museo/Paginas/RestauracionMuseo.php</file>
         </group>
     </open-files>

@@ -67,7 +67,9 @@
 		<br><br><br>
 		<div class="col-xs-4">
 		   <label for="txtCantidad">Cantidad:*</label>
-           <input type="number" id="txtCantidad" min="1"  step="1" onkeypress="esNumeroNatural(event)" class="form-control"/>
+                   <input type="number" id="txtCantidad" min="1"  step="1" onkeypress="esNumeroNatural(event)" class="form-control"/>
+                   <label for="txtSala">Sala:</label>
+                   <input type="text" id="txtSala" class="form-control"/>
 		   </br>
 		</div>
 		<br><br><br><br>

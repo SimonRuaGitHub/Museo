@@ -79,9 +79,9 @@ function llenarTablaObras(obras)
                                  <td>'+d.cantidad+'</td>\n\
                                  <td>'+d.estado+'</td>\n\
                                  <td>'+d.autores+'</td>\n\
-                                 <td>'+d.museo+'</td>\n\
                                  <td>'+d.tecnica+'</td>\n\
                                  <td>'+d.estilo+'</td>\n\
+                                 <td>'+d.sala+'</td>\n\
                                  </tr>';  
                         
                           $('#tblObras tbody').append(row);
@@ -145,8 +145,8 @@ function ignorarNulos(d)
      if(d.estilo == null)
         d.estilo = '';
     
-     if(d.museo == null)
-        d.museo = '';
+     if(d.sala == null)
+        d.sala = '';
     
      if(d.material == null)
         d.material = '';
@@ -168,7 +168,8 @@ function iniciarPropiedadesTabla(tabla)
             style:    'os',
             selector: 'td:first-child'
         },
-        order: [[ 1, 'asc' ]]
+        order: [[ 1, 'asc' ]],
+        scrollX: true
     } );
     
        /*   $( "#aAct" ).click(function() {     

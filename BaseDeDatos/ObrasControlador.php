@@ -33,6 +33,7 @@ class ObrasControlador
                   $tecnica = ($_REQUEST['tecnica'] == "" ? null:$_REQUEST['tecnica']);
                   $material = ($_REQUEST['material'] == "" ? null:$_REQUEST['material']);
 		  $autores = ($_REQUEST['autores'] == "" ? null:$_REQUEST['autores']);
+                  $sala = ($_REQUEST['sala'] == "" ? null:$_REQUEST['sala']);
 
 		 //Campos Obligatorios
 		  $Obra->setCodigo($_REQUEST['codigo']);
@@ -50,6 +51,7 @@ class ObrasControlador
 		  $Obra->setTecnica($tecnica);
 		  $Obra->setMaterial($material);
 		  $Obra->setAutor($autores);
+                  $Obra->setSala($sala);
       }
 
       public function registrarObra($GestorObras,$Obra)

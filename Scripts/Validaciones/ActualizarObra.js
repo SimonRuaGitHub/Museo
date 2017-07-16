@@ -89,7 +89,7 @@ function actualizarObra()
 			    data: { codigo:$('#txtCodigo').val(),codigoOrg: codigoOriginal, nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
 			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo:this.validarComboBox('#cboxEstilo'), 
 			            tecnica:this.validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
-				    estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
+				    estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),sala:$('#txtSala').val(),
 				    accion: 'actualizar'
 			         },
 		            success: function(flag_registro)

@@ -30,10 +30,11 @@ function RegistrarObra()
 			   type: 'POST',
 			   async: true,
 			    data: { codigo:$('#txtCodigo').val(), nombre:$('#txtNombre').val(), tipo:$('#txtTipo').val(), fechaCreacion:$('#txtFechaCr').val(), 
-			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo: this.validarComboBox('#cboxEstilo'), 
+			            periodo:$('#txtPeriodo').val(), fechaEntrada:$('#DtEntrada').val() , estilo: this.validarComboBox('#cboxEstilo'),
 			            tecnica: this.validarComboBox('#cboxTecnica') , valor:$('#txtValor').val(), cantidad:$('#txtCantidad').val(), 
-						estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
-						accion: 'insertar'
+				    estado:$('#cboxEstado option:selected').text(), material: $('#txaMaterial').val(), autores: $('#txaAutores').val(),
+                                    sala:$('#txtSala').val(),
+				    accion: 'insertar'
 			         },
 		       success: function(flag_registro)
 			   { 		
@@ -41,7 +42,7 @@ function RegistrarObra()
 			           {
 			                $('#DivMensaje').removeClass("alert alert-danger");
 	                                $('#DivMensaje').addClass("alert alert-success");
-	                                $('#DivMensaje').html("<strong>Obra actualizada con exito</strong>");
+	                                $('#DivMensaje').html("<strong>Obra registrada con exito</strong>");
 			           }
 			            else 
 			           {
