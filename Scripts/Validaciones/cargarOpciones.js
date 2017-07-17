@@ -80,3 +80,32 @@ function cargarComponentesCompatibles()
             $('#DtEntrada').datepicker({ dateFormat: 'yy-mm-dd' });
       }
 }
+
+function cargarObrasNombres()
+{
+    var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
+	
+    $.ajax(  {
+                url: urlObrasControlador,
+                type: 'POST',
+                async: true,
+                dataType: 'json',
+                data:{ accion:'consultarNombres' },
+                success: function(nombres)
+                {
+                         llenarOpcionesNombresObras(nombres);
+                }
+	      }
+           ); 	
+}
+
+function llenarOpcionesNombresObras(nombres)
+{
+    $(nombres).each(
+                            function(i , registro)
+                            {
+                                    console.log(registro.nombre);
+                                    $('#nombresObras').append('<option value="'+registro.nombre+'"/>');
+                            }                       
+                        )
+}

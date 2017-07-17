@@ -23,12 +23,10 @@ class ObrasGestion
      {         
               $query = "SELECT obras.ID, obras.tipo, obras.nombre, obras.fecha_creacion, obras.periodo, 
                                obras.fecha_entrada, obras.material, obras.valor, obras.cantidad, 
-                               obras.estado, obras.autores, museos.nombre AS museo,
-                               tecnicas.nombre AS tecnica , estilos.nombre AS estilo, sala
+                               obras.estado, obras.autores,tecnicas.nombre AS tecnica , estilos.nombre AS estilo, sala
                         FROM obras 
                         LEFT JOIN tecnicas ON obras.cod_tecnica = tecnicas.codigo
-                        LEFT JOIN estilos ON obras.cod_estilo = estilos.Codigo
-                        LEFT JOIN museos ON obras.ID_museo = museos.ID";
+                        LEFT JOIN estilos ON obras.cod_estilo = estilos.Codigo";
 
               $sqlEx =  $conexion -> prepare($query);
               $sqlEx -> execute();
@@ -76,6 +74,28 @@ class ObrasGestion
             $valortotal = $sqlEx -> fetch(PDO::FETCH_ASSOC);
             
             return $valortotal;   
+     }
+     
+     public function consultarObrasNombres($conexion)
+     {         
+              $query = "SELECT nombre FROM obras";
+
+              $sqlEx =  $conexion -> prepare($query);
+              $sqlEx -> execute();
+              $nombres = $sqlEx -> fetchAll(PDO::FETCH_ASSOC);
+              
+              return $nombres;
+     }
+     
+     public function guardarImagenObra($con,$Obra)
+     {
+            $ins = "UPDATE obras  SET imagen = ?
+                     WHERE nombre = ?";
+
+             $sqlEx = $con -> prepare($ins);
+             $sqlEx -> execute(array($Obra->getImagen(),$Obra->getNombre()));
+
+             return TRUE;
      }
 }
 

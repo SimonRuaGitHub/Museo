@@ -125,4 +125,56 @@ function validarComboBox(IDcbox) //Estilo y Tecnica unicamente
 			  return $(IDcbox +' option:selected').val();
 }
 
+function guardarImagen()
+{
+         var file = $("#imagen")[0].files[0];
+         var nombre = $("#nombreObra").val();
+         
+         $('#mensajeFoto').removeClass("alert alert-danger");
+         $('#mensajeFoto').removeClass("alert alert-success");
+         $('#mensajeFoto').removeClass("alert alert-warning");
+         
+         if(file != null && nombre != null)
+         {
+             this.guardarImagenBD(nombre,file);
+         }
+         else 
+         {
+             $('#mensajeFoto').addClass("alert alert-warning");
+             $('#mensajeFoto').html("<strong>Por favor ingrese toda la informacion necesaria</strong>");
+         }
+}
 
+function guardarImagenBD(nombre,file)
+{
+         var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
+         
+         $.ajax(  {
+ 		           url: urlObrasControlador,
+			   type: 'POST',
+			   async: true,
+			    data: { nombre: nombre, imagen: "hello", accion: 'guardarImagen'		            
+			         },
+		       success: function(response)
+			   { 		
+			           if(response == 1)		
+			           {
+			                $('#mensajeFoto').removeClass("alert alert-danger");
+	                                $('#mensajeFoto').addClass("alert alert-success");
+	                                $('#mensajeFoto').html("<strong>Imagen guardada con exito</strong>");
+			           }
+			            else 
+			           {
+                                     $('#mensajeFoto').removeClass("alert alert-success");
+	                             $('#mensajeFoto').addClass("alert alert-danger");
+	                             $('#mensajeFoto').html("<strong>Revise los datos ingresados</strong>");
+			           }
+				          
+			   },
+			   beforeSend: function()
+			   {
+				       $('#mensajeFoto').html("");
+			   }
+	         }
+		  );
+}

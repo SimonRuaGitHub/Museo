@@ -14,23 +14,41 @@
 	   <script type = "text/javascript" src = "../decoradores/Bootstrap_libs/js/bootstrap.min.js"></script>   
            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-           <script src="../Scripts/dataTable/js/dataTables.bootstrap.min.js"></script> 
+           <script type = "text/javascript" src = "../Scripts/Validaciones/cargarOpciones.js"></script>
+           <script type = "text/javascript" src = "../Scripts/Validaciones/validarRegistroObras.js"></script>
            <meta charset="UTF-8">
     </head>
-    <body>
+    <body onload="cargarObrasNombres()">
         <?php include './Template/HeaderGC.php' ?>
         <div class="section">
           <div class="container">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-lg-12">
                   <form id="frmRegistrarRestaurador" role="form">
-                         <div class="col-sm-3"></div>
-                         <div class="col-sm-6">
+                         <div class="col-md-2"></div>
+                         <div class="col-md-4">
+                             <h3>Imagenes de las obras</h3>
+                             <br>
                              <div class="form-group">
-                                   <input type="file" class="form-control">
+                                   <label class="control-label">Seleccionar obra: *</label>
+                                   <input id="nombreObra" name="nombreObra" list="nombresObras"/>
+                                    <datalist id="nombresObras">
+                                    </datalist>
                              </div>
+                             <div class="form-group">
+                                   <label class="control-label" for="Nombres">Anexar foto obra: *</label>
+                                   <input id="imagen" type="file"/>
+                             </div>
+                             <br>
+                             <button type="button" class="btn btn-success" onclick="guardarImagen()">Guardar 
+                                 <span class="glyphicon glyphicon-save-file"></span></button>
+                             <br>
+                             <br>
+                             <label id="mensajeFoto"></label>
                          </div>
-                         <div class="col-sm-3"></div>
+                         <div class="col-md-6">
+                         </div>
+                         <div class="col-md-2"></div>
                   </form>
               </div>
             </div>

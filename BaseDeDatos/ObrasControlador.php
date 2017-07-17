@@ -23,6 +23,12 @@ switch($opcion)
   
       case "totalObra": ObrasControlador::consultarTotalValorObras($GestorObras);
       break;
+  
+      case "consultarNombres": ObrasControlador::consultarObrasNombres($GestorObras);
+      break;
+  
+      case "guardarImagen": ObrasControlador::guardarImagenObra($GestorObras,$Obra);
+      break;
 }
 //-------------------------clase controladora--------------------------------
 class ObrasControlador
@@ -111,6 +117,31 @@ class ObrasControlador
 	    conexion_bd::desconectar();
 
 	    print json_encode($response);
+     }
+     
+     public function consultarObrasNombres($GestorObras)
+     {
+             $con = null;
+             $nombresObras = null;
+
+             $con = conexion_bd::conectar();
+	     $nombresObras = $GestorObras->consultarObrasNombres($con);
+	     conexion_bd::desconectar();
+
+	     print json_encode($nombresObras);
+     }
+     
+     public function guardarImagenObra($GestorObras,$Obra)
+     {
+             $con = null;
+             $Obra->setNombre($_REQUEST['nombre']);
+             $Obra->setImagen($_REQUEST['imagen']);
+
+             $con = conexion_bd::conectar();
+	     $response = $GestorObras->guardarImagenObra($con,$Obra);
+	     conexion_bd::desconectar();
+
+	     print $response;
      }
 }
 

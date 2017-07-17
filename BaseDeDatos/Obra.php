@@ -22,6 +22,7 @@ class Obra
 	private $material;
 	private $autor;
         private $sala;
+        private $imagen;
 
 	public function setCantidad($cantidad)
 	{
@@ -163,7 +164,13 @@ class Obra
         function setSala($sala) {
             $this->sala = $sala;
         }
+        
+        function getImagen() {
+            return $this->imagen;
+        }
 
-
+        function setImagen($imagen) {
+            $this->imagen = $imagen;
+        }
 }
 ?>
