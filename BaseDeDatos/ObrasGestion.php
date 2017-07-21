@@ -89,13 +89,28 @@ class ObrasGestion
      
      public function guardarImagenObra($con,$Obra)
      {
-            $ins = "UPDATE obras  SET imagen = ?
-                     WHERE nombre = ?";
+            $ins = "UPDATE obras  SET imagen = :imagen
+                    WHERE nombre = :nombre";
 
              $sqlEx = $con -> prepare($ins);
-             $sqlEx -> execute(array($Obra->getImagen(),$Obra->getNombre()));
+             $sqlEx -> bindParam(':imagen' , $Obra->getImagen());
+             $sqlEx -> bindParam(':nombre' , $Obra->getNombre());
+             $sqlEx -> execute();
 
              return TRUE;
+     }
+     
+     public function consultarFotos($conexion)
+     {
+              $query = "SELECT ID,nombre,imagen
+                        FROM obras
+                        WHERE imagen IS NOT NULL";
+
+              $sqlEx =  $conexion -> prepare($query);
+              $sqlEx -> execute();
+              $infoObras = $sqlEx -> fetchAll(PDO::FETCH_ASSOC);
+              
+              return $infoObras;
      }
 }
 

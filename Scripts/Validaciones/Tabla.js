@@ -171,10 +171,6 @@ function iniciarPropiedadesTabla(tabla)
         order: [[ 1, 'asc' ]],
         scrollX: true
     } );
-    
-       /*   $( "#aAct" ).click(function() {     
-          cargarDatosObraEmisor(table);
-      });*/
 }
 
 function cargarDatosObra()
@@ -208,3 +204,4 @@ function getDataColumn(index)
                     
     return data.toString();
 }
+

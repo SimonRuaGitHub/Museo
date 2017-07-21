@@ -128,34 +128,51 @@ function validarComboBox(IDcbox) //Estilo y Tecnica unicamente
 function guardarImagen()
 {
          var file = $("#imagen")[0].files[0];
-         var nombre = $("#nombreObra").val();
+         var fileName = $("#imagen").val();
+         var name = $("#nombreObra").val();
          
+         console.log(fileName+ ' '+name);
+     
          $('#mensajeFoto').removeClass("alert alert-danger");
          $('#mensajeFoto').removeClass("alert alert-success");
          $('#mensajeFoto').removeClass("alert alert-warning");
          
-         if(file != null && nombre != null)
+         if(fileName != "" && name != "")
          {
-             this.guardarImagenBD(nombre,file);
+            var extension = fileName.split('.').pop().toLowerCase();
+            
+            if($.inArray(extension,['jpg','png']) == -1)
+            {
+               $('#mensajeFoto').addClass("alert alert-danger");
+               $('#mensajeFoto').html("la extesion de la imagen debe ser .jpg o .png");
+            }
+            else 
+            {
+                 var formData = new FormData();
+                 formData.append('fotoObra', file);
+                 formData.append('nombreObra', name);
+                 guardarImagenBD(formData)
+            }
          }
          else 
          {
-             $('#mensajeFoto').addClass("alert alert-warning");
+             $('#mensajeFoto').addClass("alert alert-danger");
              $('#mensajeFoto').html("<strong>Por favor ingrese toda la informacion necesaria</strong>");
          }
 }
 
-function guardarImagenBD(nombre,file)
+function guardarImagenBD(formData)
 {
-         var urlObrasControlador = '../BaseDeDatos/ObrasControlador.php';
+         var urlObrasControlador = '../BaseDeDatos/ObrasFotosControlador.php';
          
          $.ajax(  {
  		           url: urlObrasControlador,
 			   type: 'POST',
 			   async: true,
-			    data: { nombre: nombre, imagen: "hello", accion: 'guardarImagen'		            
-			         },
-		       success: function(response)
+			   data: formData,
+                           contentType: false,
+                           processData: false,
+		           success: function(response)
 			   { 		
 			           if(response == 1)		
 			           {

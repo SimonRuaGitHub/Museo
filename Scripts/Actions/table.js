@@ -14,8 +14,6 @@
     } );
     
     $( "#btnAction" ).click(function() {
-          var ids = $.map(table.rows('.selected').data(), function (item) {
-           return item[1]
-          });
+          
       });
            } );

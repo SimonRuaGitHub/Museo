@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand">
-	      <img src="../Imagenes/museo.png">
+	      <img id="logoMuseo" src="../Imagenes/museo.png">
       </a>
      </div>
 
